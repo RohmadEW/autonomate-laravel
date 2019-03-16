@@ -22,9 +22,6 @@
         "yajra/laravel-datatables-oracle": "^8.13",
         "zizaco/entrust": "^1.9"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^6.2"
-    },
     "autoload": {
         "psr-4": { 
             "Automate\\CartHandler\\": "lib/Automate/Libraries/CartHandler",
@@ -34,7 +31,11 @@
             "Automate\\SavingExcel\\": "lib/Automate/Libraries/SavingExcel"
         }
     },
-    "autoload-dev": {
-        "psr-4": {}
-    }
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
