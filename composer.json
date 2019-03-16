@@ -28,7 +28,6 @@
             "Automate\\DatatablesHandler\\": "lib/Automate/Libraries/DatatablesHandler",
             "Automate\\DumpHandler\\": "lib/Automate/Libraries/DumpHandler",
             "Automate\\ExcelHandler\\": "lib/Automate/Libraries/ExcelHandler",
-            "Automate\\SavingExcel\\": "lib/Automate/Libraries/SavingExcel"
         }
     },
     "extra": {

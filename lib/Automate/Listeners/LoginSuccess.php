@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Listeners;
+namespace Automate\Listeners;
 
 use Illuminate\Auth\Events\Login;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use App\Model\Akun;
 
 class LoginSuccess {
 

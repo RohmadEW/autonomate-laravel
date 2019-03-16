@@ -6,7 +6,7 @@
  * rohmad.ew@gmail.com
  */
 
-namespace App\Libraries;
+namespace Automate\Libraries;
 
 class DatatablesHandler {
     /*
