@@ -1,9 +1,9 @@
 {
-    "name": "RohmadEW/automate-projects",
+    "name": "generator-laravel/automate-projects",
     "type": "library",
     "description": "Libraries for laravel framework",
     "keywords": ["libraries", "create laravel projects", "generator laravel"],
-    "homepage": "http://www.kertaskuning.com",
+    "homepage": "https://www.kertaskuning.com",
     "license": "MIT",
     "authors": [
         {
