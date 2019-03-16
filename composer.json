@@ -9,7 +9,7 @@
         {
             "name": "Rohmad Eko Wahyudi",
             "email": "rohmad.ew@gmail.com"
-        },
+        }
     ],
     "require": {
         "php": "^7.1",
