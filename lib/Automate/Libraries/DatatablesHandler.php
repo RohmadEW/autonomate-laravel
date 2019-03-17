@@ -9,48 +9,7 @@
 namespace Automate\Libraries;
 
 class DatatablesHandler {
-    /*
-     * if ($request->ajax()) {
-      $registrants = Registrant::with('users', 'sub_districts.districts');
-      return Datatables::of($registrants)
-      ->addColumn('validate', function($registrants) {
-      return sprintf('<a href="javascript:void();" onclick="change_validate(%s)"><i class="fa fa-%s"></i></a>', $registrants->id, $registrants->validasi ? 'close' : 'check');
-      })
-      ->addColumn('alamat_lengkap', function($registrants) {
-      return $registrants->alamat
-      . ', Kec. ' . $registrants->sub_districts['name']
-      . ', ' . $registrants->sub_districts['districts']['name'];
-      })
-      ->rawColumns(['validate', 'alamat_lengkap'])
-      ->make(true);
-      }
-
-      $datatables = array(
-      'columns' => [
-      ['data' => 'users.email', 'name' => 'users.email', 'title' => 'Email', 'footer' => 'Email'],
-      ['data' => 'users.name', 'name' => 'users.name', 'title' => 'Nama', 'footer' => 'Nama'],
-      ['data' => 'alamat_lengkap', 'name' => 'alamat_lengkap', 'title' => 'Alamat', 'footer' => 'Alamat'],
-      ['data' => 'hp', 'name' => 'hp', 'title' => 'HP', 'footer' => 'HP'],
-      ['data' => 'validate', 'name' => 'validasi', 'title' => 'Validasi', 'footer' => 'Validasi'],
-      ],
-      'searching' => [
-      'validate' => [
-      'select' => array(
-      '' => '-- Pilih --',
-      '0' => 'Belum',
-      '1' => 'Sudah'
-      )
-      ]
-      ]
-      );
-      $html = $htmlBuilder->columns($datatables['columns']);
-      $html->ajax(DatatablesHandler::defaultAjax(route('registrants.datatables')));
-      $html->parameters(DatatablesHandler::defaultParameters($datatables));
-
-      return view('backend.admin.registrant.index', compact('html'));
-     * 
-     *      */
-
+    
     public static function defaultAjax($route, $params = array()) {
         $paramsDefault = [
             'url' => $route,
@@ -80,12 +39,13 @@ class DatatablesHandler {
 
                         $column_search .= "if(title.toUpperCase() === '" . strtoupper($columns['title']) . "') input = '<select class=\"form-control input-sm datatables-search datatables-search-' + title.replace(\" \", \"-\") + '\" style=\"width:100%\">" . $option_select . "</select>';";
                     } else {
-                        $column_search .= "if(title.toUpperCase() === '" . strtoupper($columns['title']) . "') input = '<input type=\"text\" placeholder=\"Cari ' + title + '\" class=\"form-control input-sm datatables-search datatables-search-' + title.replace(\" \", \"-\") + '\" style=\"width:100%\">';";
+                        if (strtoupper($columns['title']) !== 'AKSI')
+                            $column_search .= "if(title.toUpperCase() === '" . strtoupper($columns['title']) . "') input = '<input type=\"text\" placeholder=\"Cari ' + title + '\" class=\"form-control input-sm datatables-search datatables-search-' + title.replace(\" \", \"-\") + '\" style=\"width:100%\">';";
                     }
                 }
             }
         } else {
-            $column_search = "if(title.toUpperCase() === 'AKSI') input = '<input type=\"text\" placeholder=\"Cari ' + title + '\" class=\"form-control input-sm datatables-search datatables-search-' + title.replace(\" \", \"-\") + '\" style=\"width:100%\">';";
+            $column_search = "if(title.toUpperCase() !== 'AKSI') input = '<input type=\"text\" placeholder=\"Cari ' + title + '\" class=\"form-control input-sm datatables-search datatables-search-' + title.replace(\" \", \"-\") + '\" style=\"width:100%\">';";
         }
 
         $initComplete = "

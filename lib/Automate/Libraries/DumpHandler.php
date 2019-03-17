@@ -21,14 +21,28 @@ class DumpHandler {
         header('Content-Type: application/json');
 
         if (is_array($class)) {
-            return json_encode($class);
+            return response()->json($class);
         } else {
-            return json_encode(array(
-                'class' => $class,
-                'title' => $title,
-                'msg' => $msg
+            return response()->json(array(
+                        'class' => $class,
+                        'title' => $title,
+                        'msg' => $msg
             ));
         }
+    }
+
+    public static function listDetail($text, $value) {
+        if ($value === null)
+            $value = '-';
+
+        if (is_bool($value)) {
+            if ($value)
+                $value = 'Ya';
+            else
+                $value = 'Tidak';
+        }
+
+        return '<p class="text-thin">' . $text . '</p><h4 class="text-title">' . $value . '</h4>';
     }
 
     public static function setDataC3($data) {
@@ -127,7 +141,7 @@ class DumpHandler {
         return $bindata;
     }
 
-    public function randomString($length = 25, $char_kapital = FALSE) {
+    public static function randomString($length = 25, $char_kapital = FALSE) {
         if ($char_kapital)
             $characters = '123456789ABCDEFGHIJKLMNPQRSTUVWXYZ';
         else
